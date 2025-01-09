@@ -1,8 +1,13 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 
+void register_user(const std::string& filename); //void, bo nie ma wartoœci
+bool login_user(const std::string& filename); //bool bo true or false, & przy string bo referencja do filename
+void change_password(const std::string& filename);
+
 int main() {
-	//std::string new_login, new_password;
+	const std::string filename = "users.txt"; //podpiêcie pliku, const aby by³ niezmienny
 	std::string login, password;
 	std::string correct_login;
 	std::string correct_password;
@@ -22,6 +27,49 @@ int main() {
 		switch (option) {
 		case 1: {
 			std::cout << "Welcome! Please log in.\n " << std::endl;
+			if (login_user(filename)) {
+				std::cout << "\nLogin succesfull!" << std::endl;
+			}
+			else {
+				std::cout << "\nWrong login or password!" << std::endl;
+			}
+			break;
+		}
+
+		case 2: {
+			register_user(filename);
+			break;
+		}
+
+		case 3: {
+			change_password(filename);
+			break;
+		}
+
+		case 4:
+			std::cout << "\nThank you for using our service!\n\nClosing application..." << std::endl;
+			break;
+
+		default:
+			std::cout << "\nWrong option! Please try again." << std::endl;
+		}
+	} while (option != 4);
+
+	return 0;
+}
+
+/*
+std::cout << "Register new user.\n " << std::endl;
+std::cout << "|Login|: ";
+std::cin >> correct_login;
+std::cout << "|Password|: ";
+std::cin >> correct_password;
+break;
+*/
+
+/*
+case 1: {
+			std::cout << "Welcome! Please log in.\n " << std::endl;
 			std::cout << "|Login|: ";
 			std::cin >> login;
 			std::cout << "|Password|: ";
@@ -33,15 +81,6 @@ int main() {
 			else {
 				std::cout << "\nWrong login or password!" << std::endl;
 			}
-			break;
-		}
-
-		case 2: {
-			std::cout << "Register new user.\n " << std::endl;
-			std::cout << "|Login|: ";
-			std::cin >> correct_login;
-			std::cout << "|Password|: ";
-			std::cin >> correct_password;
 			break;
 		}
 
@@ -81,15 +120,4 @@ int main() {
 			}
 			break;
 		}
-
-		case 4:
-			std::cout << "\nThank you for using our service!\n\nClosing application..." << std::endl;
-			break;
-
-		default:
-			std::cout << "\nWrong option! Please try again." << std::endl;
-		}
-	} while (option != 4);
-
-	return 0;
-}
+*/
