@@ -3,7 +3,7 @@
 
 #include <string>
 
-// Deklaracja funkcji - mówi, ¿e istnieje funkcja
+// Declarations
 void register_user(const std::string& filename);
 bool login_user(const std::string& filename);
 void change_password(const std::string& filename);
